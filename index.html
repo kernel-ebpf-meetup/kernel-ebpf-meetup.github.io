@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Monthly Linux Kernel & eBPF Meetup in SF Bay Area - Join us for casual discussions about kernel development, eBPF, and systems programming">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:title" content="Linux Kernel & eBPF Meetup - SF Bay Area">
+    <meta property="og:description" content="Monthly Linux Kernel & eBPF Meetup in SF Bay Area - Join us for casual discussions about kernel development, eBPF, and systems programming">
+    <link rel="icon" type="image/png" href="logo.png">
     <title>Linux Kernel & eBPF Meetup - SF Bay Area</title>
     <style>
         * {
@@ -32,6 +36,17 @@
             padding: 80px 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: white;
+            padding: 5px;
         }
 
         .hero h1 {
@@ -274,7 +289,8 @@
     <!-- Hero Section -->
     <div class="hero">
         <div class="container">
-            <h1>🐧 Linux Kernel & eBPF Meetup</h1>
+            <img src="logo.png" alt="SF Bay Area Linux Kernel & eBPF Meetup Logo" class="hero-logo">
+            <h1>Linux Kernel & eBPF Meetup</h1>
             <p>SF Bay Area | Monthly | Casual & Friendly</p>
             <p class="tagline">Deep dive into kernel development, eBPF, and systems programming</p>
         </div>
@@ -395,11 +411,6 @@
     <footer>
         <p>Linux Kernel & eBPF Meetup - SF Bay Area</p>
         <p>Made with 💜 by the community, for the community</p>
-        <p style="margin-top: 15px;">
-            <a href="https://www.kernel.org/">Linux Kernel</a> | 
-            <a href="https://ebpf.io/">eBPF.io</a> | 
-            <a href="https://github.com">GitHub</a>
-        </p>
     </footer>
 </body>
 </html>
