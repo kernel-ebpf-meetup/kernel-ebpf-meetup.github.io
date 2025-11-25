@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monthly Linux Kernel & eBPF Meetup in SF Bay Area - Join us for casual discussions about kernel development, eBPF, and systems programming">
+    <title>Linux Kernel & eBPF Meetup - SF Bay Area</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .content {
+            background: white;
+            margin: -40px auto 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 50px 60px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .info-card .highlight {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.15rem;
+        }
+
+        /* Format List */
+        .format-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .format-list li {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+            transition: background 0.2s;
+        }
+
+        .format-list li:hover {
+            background: #e9ecef;
+        }
+
+        .format-list li::before {
+            content: '▸';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Topics Section */
+        .topics-intro {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .topics-intro p {
+            color: #4c1d95;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 35px 25px;
+            }
+
+            .section h2 {
+                font-size: 1.6rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cta-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Icon styles */
+        .icon {
+            font-style: normal;
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>🐧 Linux Kernel & eBPF Meetup</h1>
+            <p>SF Bay Area | Monthly | Casual & Friendly</p>
+            <p class="tagline">Deep dive into kernel development, eBPF, and systems programming</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content">
+            <!-- About Section -->
+            <div class="section">
+                <h2>About the Meetup</h2>
+                <p>Welcome to the SF Bay Area's premier community for Linux kernel enthusiasts and eBPF developers! Whether you're a seasoned kernel hacker or just getting started with systems programming, join us for informal discussions, knowledge sharing, and networking with fellow developers.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><span class="icon">📅</span> When</h3>
+                        <p class="highlight">Monthly on Fridays</p>
+                        <p>5:00 PM - 7:00 PM</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="icon">📍</span> Where</h3>
+                        <p class="highlight">SF Bay Area</p>
+                        <p>Location: TBD<br>(Announced before each meetup)</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><span class="icon">👥</span> Format</h3>
+                        <p class="highlight">Casual & Interactive</p>
+                        <p>Open discussions and community-driven topics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topics Section -->
+            <div class="section">
+                <h2>What We Discuss</h2>
+                <p>Our topics are driven by community interest through surveys. We cover a wide range of subjects including:</p>
+                
+                <ul class="format-list">
+                    <li>Linux kernel internals and development</li>
+                    <li>eBPF programming and use cases</li>
+                    <li>Performance monitoring and tracing</li>
+                    <li>Networking and XDP</li>
+                    <li>Security and sandboxing with eBPF</li>
+                    <li>Kernel debugging techniques</li>
+                    <li>Latest kernel features and patches</li>
+                    <li>Real-world production experiences</li>
+                </ul>
+
+                <div class="topics-intro">
+                    <p><strong>📊 Your Voice Matters!</strong> Topics are collected through community surveys. We want to discuss what YOU want to learn and share.</p>
+                </div>
+            </div>
+
+            <!-- Format Section -->
+            <div class="section">
+                <h2>Meetup Format</h2>
+                <p>We keep things relaxed and flexible to encourage genuine learning and networking:</p>
+                
+                <ul class="format-list">
+                    <li><strong>Casual atmosphere</strong> - No formal presentations unless you want to!</li>
+                    <li><strong>Open discussions</strong> - Share experiences, ask questions, learn together</li>
+                    <li><strong>Networking</strong> - Connect with other kernel and eBPF developers</li>
+                    <li><strong>Hands-on</strong> - Bring your laptop for impromptu coding sessions</li>
+                    <li><strong>All levels welcome</strong> - From curious beginners to kernel maintainers</li>
+                </ul>
+            </div>
+
+            <!-- Get Involved Section -->
+            <div class="section">
+                <h2>Get Involved</h2>
+                <p>Ready to join our community? Here's how to stay connected and participate:</p>
+                
+                <div class="cta-container">
+                    <a href="#" class="btn btn-primary">📝 Take Topic Survey</a>
+                    <a href="#" class="btn btn-secondary">💬 Join Discussion</a>
+                </div>
+
+                <div class="info-grid" style="margin-top: 40px;">
+                    <div class="info-card">
+                        <h3>🔔 Stay Updated</h3>
+                        <p>Follow this page for announcements about upcoming meetups, locations, and special events.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💡 Suggest Topics</h3>
+                        <p>Have an interesting topic? Fill out our survey or reach out to propose discussion ideas.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎤 Present Your Work</h3>
+                        <p>Want to share your kernel or eBPF project? We'd love to hear from you!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="section">
+                <h2>Contact & Links</h2>
+                <p>Have questions or want to get in touch? Here are the ways to reach us:</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>📧 Email</h3>
+                        <p>Contact the organizers:<br><a href="mailto:organizers@example.com" style="color: #667eea; text-decoration: none;">organizers@example.com</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🐙 GitHub</h3>
+                        <p>Star and watch this repo for updates and discussions</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🗓️ Next Meetup</h3>
+                        <p>Check back soon for our next scheduled meetup date and location!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Linux Kernel & eBPF Meetup - SF Bay Area</p>
+        <p>Made with 💜 by the community, for the community</p>
+        <p style="margin-top: 15px;">
+            <a href="https://www.kernel.org/">Linux Kernel</a> | 
+            <a href="https://ebpf.io/">eBPF.io</a> | 
+            <a href="https://github.com">GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>
+
