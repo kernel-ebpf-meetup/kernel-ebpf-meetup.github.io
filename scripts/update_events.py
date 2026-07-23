@@ -51,47 +51,47 @@ def location_of(event):
     geo = event.get("geo_address_info") or {}
     place = geo.get("city_state") or geo.get("full_address")
     if place:
-        return f"📍 {place}"
+        return place
     if event.get("location_type") == "online":
-        return "💻 Online"
-    return "📍 Location TBD"
+        return "Online"
+    return "Location to be announced"
 
 
 def render_card(event):
     start = local_start(event)
     url = f"https://luma.com/{event['url']}"
-    time_label = start.strftime("%a %-I:%M %p").replace("AM", "AM").replace("PM", "PM")
+    time_label = start.strftime("%a %-I:%M %p")
 
-    return f"""                    <a class="event-card" href="{html.escape(url)}">
-                        <div class="event-date">
-                            <span class="event-month">{start.strftime('%b').upper()}</span>
-                            <span class="event-day">{start.day}</span>
-                        </div>
-                        <div class="event-body">
-                            <h3>{html.escape(event['name'])}</h3>
-                            <p class="event-time">{html.escape(time_label)}</p>
-                            <p class="event-location">{html.escape(location_of(event))}</p>
-                            <span class="event-rsvp">RSVP on Luma →</span>
-                        </div>
-                    </a>"""
+    return f"""                <a class="event-card" href="{html.escape(url)}">
+                    <div class="event-date">
+                        <span class="event-month">{start.strftime('%b').upper()}</span>
+                        <span class="event-day">{start.day}</span>
+                    </div>
+                    <div class="event-body">
+                        <h3>{html.escape(event['name'])}</h3>
+                        <p class="event-time">{html.escape(time_label)}</p>
+                        <p class="event-location">{html.escape(location_of(event))}</p>
+                        <span class="event-rsvp">RSVP on Luma &rarr;</span>
+                    </div>
+                </a>"""
 
 
 def render_block(events):
     if events:
         cards = "\n".join(render_card(event) for event in events)
-        body = f"""                <div class="event-grid">
+        body = f"""            <div class="event-grid">
 {cards}
-                </div>"""
+            </div>"""
     else:
-        body = f"""                <p class="event-empty">No meetups are scheduled right now. <a href="{CALENDAR_URL}">Subscribe to our calendar</a> to hear about the next one first.</p>"""
+        body = f"""            <p class="event-empty">No meetups are scheduled right now. <a href="{CALENDAR_URL}">Subscribe to the calendar</a> to hear about the next one.</p>"""
 
     return f"""{START}
-            <div class="section">
-                <h2>Upcoming Meetups</h2>
+        <section class="section" id="upcoming">
+            <h2>Upcoming meetups</h2>
 {body}
-                <p class="event-footnote">Dates and locations come straight from our <a href="{CALENDAR_URL}">Luma calendar</a>.</p>
-            </div>
-            {END}"""
+            <p class="event-footnote">Dates and locations come from our <a href="{CALENDAR_URL}">Luma calendar</a>.</p>
+        </section>
+        {END}"""
 
 
 def main():
