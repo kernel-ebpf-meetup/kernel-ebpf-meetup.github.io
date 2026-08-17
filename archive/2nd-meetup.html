@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Archive of the 2nd SF Bay Area Linux Kernel & eBPF Meetup, July 31, 2026 in Los Altos, CA: recording and slides">
+    <meta property="og:image" content="../logo.png">
+    <meta property="og:title" content="2nd Meetup Archive - Linux Kernel & eBPF Meetup">
+    <meta property="og:description" content="Recording and slides from the 2nd SF Bay Area Linux Kernel & eBPF Meetup, July 31, 2026 in Los Altos, CA">
+    <link rel="icon" type="image/png" href="../logo.png">
+    <title>2nd Meetup - Linux Kernel &amp; eBPF Meetup</title>
+    <style>
+        :root {
+            --ink: #18181b;
+            --muted: #52525b;
+            --accent: #c2410c;
+            --rule: #e4e4e7;
+            --panel: #f8f8f7;
+            --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--ink);
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .wrap {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .site-header {
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .site-header .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        .mark {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--ink);
+        }
+
+        .mark:hover {
+            text-decoration: none;
+        }
+
+        .mark img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .mark span {
+            font-weight: 650;
+            font-size: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 26px;
+            font-size: 14px;
+        }
+
+        .site-nav a {
+            color: var(--muted);
+        }
+
+        .site-nav a:hover {
+            color: var(--accent);
+        }
+
+        .page-head {
+            border-bottom: 1px solid var(--rule);
+            background: var(--panel);
+        }
+
+        .page-head .wrap {
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            font-weight: 700;
+        }
+
+        .facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            margin-top: 24px;
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .facts b {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 56px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section h2 {
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 650;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .prose {
+            max-width: 68ch;
+        }
+
+        .prose p + p {
+            margin-top: 16px;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .stack {
+            max-width: 68ch;
+        }
+
+        .stack li {
+            list-style: none;
+            padding: 14px 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .stack li b {
+            font-weight: 650;
+        }
+
+        .stack li span {
+            color: var(--muted);
+        }
+
+        .slide-link {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        footer {
+            padding: 32px 0 48px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                padding: 0 24px;
+            }
+
+            .site-nav {
+                display: none;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="mark" href="../index.html">
+                <img src="../logo.png" alt="SF Bay Area Linux Kernel &amp; eBPF Meetup logo">
+                <span>Kernel &amp; eBPF Meetup</span>
+            </a>
+            <nav class="site-nav">
+                <a href="../index.html#upcoming">Upcoming</a>
+                <a href="../index.html#archive">Archive</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-head">
+        <div class="wrap">
+            <p class="eyebrow">Archive &middot; 2nd Meetup</p>
+            <h1>[PATCH v2] Linux Kernel &amp; eBPF Meetup</h1>
+            <div class="facts">
+                <span>Date: <b>Friday, July 31, 2026</b></span>
+                <span>Location: <b>Los Altos, CA</b></span>
+                <span>Event: <b><a href="https://luma.com/ic6639ja">Luma page</a></b></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="wrap">
+        <section class="section" id="recording">
+            <h2>Recording</h2>
+            <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/ZC8RFntCnpw" title="[PATCH v2] Linux Kernel &amp; eBPF Meetup recording" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="prose" style="margin-top: 16px; font-size: 14px; color: var(--muted);">Also available <a href="https://youtu.be/ZC8RFntCnpw">on YouTube</a>.</p>
+        </section>
+
+        <section class="section" id="slides">
+            <h2>Slides</h2>
+            <ul class="stack">
+                <li>
+                    <b>The Fabric Is the Cluster Driver</b> <span>Cross-Layer eBPF Policies for GPU&ndash;CXL Fabrics</span>
+                    <br>
+                    <a class="slide-link" href="../slides/2026-07-31-the-fabric-is-the-cluster-driver.pdf">Download slides (PDF) &rarr;</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="wrap">
+        <p>SF Bay Area Linux Kernel &amp; eBPF Meetup. Run by the community. <a href="../index.html">Back to home</a></p>
+    </footer>
+</body>
+</html>
