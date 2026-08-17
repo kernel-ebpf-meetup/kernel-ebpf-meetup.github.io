@@ -7,16 +7,22 @@
     <meta property="og:image" content="logo.png">
     <meta property="og:title" content="Linux Kernel & eBPF Meetup - SF Bay Area">
     <meta property="og:description" content="Monthly Linux Kernel & eBPF Meetup in SF Bay Area - Join us for casual discussions about kernel development, eBPF, and systems programming">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="logo-small.png">
     <title>Linux Kernel & eBPF Meetup - SF Bay Area</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ink: #18181b;
-            --muted: #52525b;
-            --accent: #c2410c;
-            --rule: #e4e4e7;
-            --panel: #f8f8f7;
-            --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+            --paper: #fcfcfb;
+            --ink: #1e2a36;
+            --muted: #5c6b7a;
+            --accent: #c2452d;
+            --bee: #f0b429;
+            --rule: #e4e4e0;
+            --panel: #f4f4f1;
+            --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         * {
@@ -26,11 +32,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--sans);
             font-size: 16px;
             line-height: 1.65;
             color: var(--ink);
-            background: #fff;
+            background: var(--paper);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -50,9 +56,9 @@
         }
 
         .wrap {
-            max-width: 940px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 24px;
         }
 
         /* Header */
@@ -65,14 +71,14 @@
             align-items: center;
             justify-content: space-between;
             gap: 24px;
-            padding-top: 16px;
-            padding-bottom: 16px;
+            padding-top: 14px;
+            padding-bottom: 14px;
         }
 
         .mark {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             color: var(--ink);
         }
 
@@ -81,22 +87,23 @@
         }
 
         .mark img {
-            width: 38px;
-            height: 38px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             object-fit: cover;
         }
 
         .mark span {
-            font-weight: 650;
+            font-weight: 600;
             font-size: 15px;
             letter-spacing: -0.01em;
         }
 
         .site-nav {
             display: flex;
-            gap: 26px;
-            font-size: 14px;
+            gap: 22px;
+            font-family: var(--mono);
+            font-size: 13px;
         }
 
         .site-nav a {
@@ -105,229 +112,246 @@
 
         .site-nav a:hover {
             color: var(--accent);
+            text-decoration: none;
         }
 
         /* Hero */
         .hero {
+            padding: 72px 0 56px;
             border-bottom: 1px solid var(--rule);
-            background: var(--panel);
-        }
-
-        .hero .wrap {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 420px;
-            align-items: center;
-            gap: 48px;
-            padding-top: 56px;
-            padding-bottom: 56px;
-        }
-
-        /* The badge ships on a white field; multiply drops it onto the panel tone. */
-        .hero-logo {
-            width: 100%;
-            max-width: 420px;
-            height: auto;
-            justify-self: end;
-            mix-blend-mode: multiply;
         }
 
         .eyebrow {
             font-family: var(--mono);
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 42px;
-            line-height: 1.15;
-            letter-spacing: -0.025em;
+            font-size: 44px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
             font-weight: 700;
+            max-width: 16ch;
         }
 
         .lede {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--muted);
             margin-top: 20px;
-            max-width: 54ch;
-        }
-
-        .facts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 28px;
-            margin-top: 28px;
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        .facts b {
-            color: var(--ink);
-            font-weight: 600;
+            max-width: 58ch;
         }
 
         /* Sections */
         .section {
-            padding: 56px 0;
+            padding: 52px 0;
             border-bottom: 1px solid var(--rule);
         }
 
         .section h2 {
             font-family: var(--mono);
-            font-size: 13px;
-            font-weight: 650;
-            letter-spacing: 0.12em;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .prose {
-            max-width: 68ch;
+            max-width: 60ch;
         }
 
         .prose p + p {
-            margin-top: 16px;
+            margin-top: 14px;
         }
 
-        /* Event cards */
+        /* Upcoming event cards (markup generated by scripts/update_events.py) */
         .event-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
 
         .event-card {
             display: flex;
-            gap: 20px;
-            padding: 22px;
+            gap: 22px;
+            padding: 20px 22px;
             background: var(--panel);
             border: 1px solid var(--rule);
             border-radius: 6px;
             color: var(--ink);
-            transition: border-color 0.15s, background 0.15s;
+            transition: border-color 0.15s;
         }
 
         .event-card:hover {
             text-decoration: none;
-            border-color: #d4d4d8;
-            background: #f4f4f2;
+            border-color: var(--accent);
         }
 
         .event-date {
             flex-shrink: 0;
-            width: 60px;
-            padding: 8px 0;
+            width: 56px;
             text-align: center;
-            border-radius: 4px;
-            background: var(--ink);
-            color: #fff;
-            align-self: flex-start;
+            font-family: var(--mono);
+            border-right: 1px solid var(--rule);
+            padding-right: 22px;
+            box-sizing: content-box;
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .event-month {
             display: block;
-            font-family: var(--mono);
             font-size: 11px;
-            font-weight: 650;
-            letter-spacing: 0.08em;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--muted);
         }
 
         .event-day {
             display: block;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 600;
             line-height: 1.2;
+            color: var(--accent);
         }
 
         .event-body h3 {
-            font-size: 16px;
-            font-weight: 650;
+            font-size: 17px;
+            font-weight: 600;
             letter-spacing: -0.01em;
             line-height: 1.35;
         }
 
         .event-body p {
-            font-size: 14px;
+            font-family: var(--mono);
+            font-size: 13px;
             color: var(--muted);
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         .event-rsvp {
             display: inline-block;
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 600;
+            margin-top: 10px;
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 500;
             color: var(--accent);
         }
 
-        .event-empty,
-        .event-footnote {
+        .event-card:hover .event-rsvp {
+            text-decoration: underline;
+        }
+
+        .event-empty {
             color: var(--muted);
         }
 
         .event-footnote {
             font-size: 13px;
-            margin-top: 24px;
+            color: var(--muted);
+            margin-top: 20px;
         }
 
-        /* Lists */
-        .stack {
-            max-width: 68ch;
-            margin-top: 28px;
-        }
-
-        .stack li {
+        /* Ruled rows: the one list device used everywhere */
+        .rows {
             list-style: none;
+        }
+
+        .rows li {
             padding: 14px 0;
             border-top: 1px solid var(--rule);
         }
 
-        .stack li b {
-            font-weight: 650;
+        .rows b {
+            font-weight: 600;
         }
 
-        .stack li span {
+        .rows .dim {
             color: var(--muted);
         }
 
+        /* Past meetups */
+        .log-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px 16px;
+        }
+
+        .log-date {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .log-title {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .log-title:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .log-links {
+            margin-left: auto;
+            font-family: var(--mono);
+            font-size: 13px;
+        }
+
+        /* Topics */
         .topics {
+            list-style: none;
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 40px;
         }
 
         .topics li {
-            list-style: none;
-            padding: 13px 0;
+            padding: 12px 0;
             border-top: 1px solid var(--rule);
             font-size: 15px;
         }
 
+        /* Contact */
         .contact-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 0 40px;
-            margin-top: 28px;
+            max-width: 60ch;
+            margin-top: 4px;
         }
 
         .contact-list div {
-            padding: 16px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            padding: 13px 0;
             border-top: 1px solid var(--rule);
         }
 
         .contact-list dt {
+            flex-shrink: 0;
+            width: 90px;
             font-family: var(--mono);
-            font-size: 11px;
-            font-weight: 650;
-            letter-spacing: 0.1em;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-bottom: 4px;
         }
 
         .contact-list dd {
@@ -336,48 +360,47 @@
 
         /* Footer */
         footer {
-            padding: 32px 0 48px;
-            font-size: 13px;
+            padding: 28px 0 48px;
+            font-family: var(--mono);
+            font-size: 12px;
             color: var(--muted);
         }
 
-        @media (max-width: 860px) {
-            .hero .wrap {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                padding-top: 40px;
-                padding-bottom: 40px;
-            }
-
-            .hero-logo {
-                order: -1;
-                justify-self: center;
+        @media (max-width: 640px) {
+            .hero {
+                padding: 48px 0 40px;
             }
 
             h1 {
                 font-size: 32px;
             }
 
-            .lede {
-                font-size: 17px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .wrap {
-                padding: 0 24px;
+            .section {
+                padding: 40px 0;
             }
 
             .site-nav {
                 display: none;
             }
 
-            .section {
-                padding: 40px 0;
-            }
-
             .topics {
                 grid-template-columns: 1fr;
+            }
+
+            .log-links {
+                margin-left: 0;
+                flex-basis: 100%;
+            }
+
+            .contact-list div {
+                flex-direction: column;
+                gap: 2px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
             }
         }
     </style>
@@ -386,32 +409,23 @@
     <header class="site-header">
         <div class="wrap">
             <a class="mark" href="#top">
-                <img src="logo.png" alt="SF Bay Area Linux Kernel &amp; eBPF Meetup logo">
+                <img src="logo-small.png" alt="SF Bay Area Linux Kernel &amp; eBPF Meetup logo">
                 <span>Kernel &amp; eBPF Meetup</span>
             </a>
             <nav class="site-nav">
-                <a href="#upcoming">Upcoming</a>
-                <a href="#archive">Archive</a>
-                <a href="#about">About</a>
-                <a href="#topics">Topics</a>
-                <a href="#contact">Contact</a>
+                <a href="#upcoming">next</a>
+                <a href="#archive">archive</a>
+                <a href="#about">about</a>
+                <a href="#contact">contact</a>
             </nav>
         </div>
     </header>
 
     <div class="hero" id="top">
         <div class="wrap">
-            <div>
-                <p class="eyebrow">SF Bay Area &middot; Monthly</p>
-                <h1>Linux Kernel &amp; eBPF Meetup</h1>
-                <p class="lede">A monthly gathering for people working on the Linux kernel, eBPF, and systems programming. All experience levels are welcome, from those just getting started to kernel maintainers.</p>
-                <div class="facts">
-                    <span>Cadence: <b>Monthly</b></span>
-                    <span>Region: <b>SF Bay Area</b></span>
-                    <span>Style: <b>Do It Yourself</b></span>
-                </div>
-            </div>
-            <img src="logo.png" alt="" class="hero-logo">
+            <p class="eyebrow">SF Bay Area &middot; Monthly &middot; Do It Yourself</p>
+            <h1>Linux Kernel &amp; eBPF Meetup</h1>
+            <p class="lede">A monthly gathering for people working on the Linux kernel, eBPF, and systems programming. All experience levels are welcome, from those just getting started to kernel maintainers.</p>
         </div>
     </div>
 
@@ -440,13 +454,13 @@
 
         <section class="section" id="archive">
             <h2>Past meetups</h2>
-            <div class="prose">
-                <p>Recordings and slides from previous meetups.</p>
-            </div>
-            <ul class="stack">
+            <ul class="rows">
                 <li>
-                    <b><a href="archive/2nd-meetup.html">2nd Meetup, [PATCH v2]</a></b>
-                    <span>&middot; July 31, 2026 &middot; Los Altos, CA &middot; recording and slides</span>
+                    <div class="log-row">
+                        <span class="log-date">2026-07-31</span>
+                        <a class="log-title" href="archive/2nd-meetup.html"><span class="tag">[PATCH v2]</span> Linux Kernel &amp; eBPF Meetup</a>
+                        <span class="log-links"><a href="archive/2nd-meetup.html#recording">recording</a> &middot; <a href="slides/2026-07-31-the-fabric-is-the-cluster-driver.pdf">slides</a></span>
+                    </div>
                 </li>
             </ul>
         </section>
@@ -457,12 +471,12 @@
                 <p>The meetup runs in a "Do It Yourself" style: presentation is optional, and all formats are welcome. Bring a talk, a demo, a patch you are stuck on, or just questions. There are no scheduled talks unless someone wants to give one, and most of the time goes to open discussion and comparing notes on what people are working on.</p>
                 <p>Locations change from month to month and are announced on the calendar ahead of each meetup.</p>
             </div>
-            <ul class="stack">
-                <li><b>Do It Yourself.</b> <span>Presentation is optional; talks, demos, and any other format are welcome.</span></li>
-                <li><b>Open discussion.</b> <span>Share experiences, ask questions, learn together.</span></li>
-                <li><b>Networking.</b> <span>Connect with other kernel and eBPF developers.</span></li>
-                <li><b>Hands-on.</b> <span>Bring your laptop for impromptu coding sessions.</span></li>
-                <li><b>All levels welcome.</b> <span>From curious beginners to kernel maintainers.</span></li>
+            <ul class="rows" style="margin-top: 24px;">
+                <li><b>Do It Yourself.</b> <span class="dim">Presentation is optional; talks, demos, and any other format are welcome.</span></li>
+                <li><b>Open discussion.</b> <span class="dim">Share experiences, ask questions, learn together.</span></li>
+                <li><b>Networking.</b> <span class="dim">Connect with other kernel and eBPF developers.</span></li>
+                <li><b>Hands-on.</b> <span class="dim">Bring your laptop for impromptu coding sessions.</span></li>
+                <li><b>All levels welcome.</b> <span class="dim">From curious beginners to kernel maintainers.</span></li>
             </ul>
         </section>
 
@@ -471,7 +485,7 @@
             <div class="prose">
                 <p>Topics are driven by community interest and collected through our <a href="https://docs.google.com/forms/d/e/1FAIpQLSedB-kkdhvWOvYIvzUmu5aROLc5MePRm74H1bjB8XBx_6QRZA/viewform?usp=header">topic survey</a>. Recurring subjects include:</p>
             </div>
-            <ul class="topics">
+            <ul class="topics" style="margin-top: 24px;">
                 <li>Linux kernel internals and development</li>
                 <li>eBPF programming and use cases</li>
                 <li>Performance monitoring and tracing</li>
@@ -514,7 +528,7 @@
     </main>
 
     <footer class="wrap">
-        <p>SF Bay Area Linux Kernel &amp; eBPF Meetup. Run by the community.</p>
+        <p>SF Bay Area Linux Kernel &amp; eBPF Meetup &middot; run by the community</p>
     </footer>
 </body>
 </html>
