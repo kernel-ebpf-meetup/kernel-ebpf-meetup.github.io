@@ -23,6 +23,15 @@
             --panel: #f4f4f1;
             --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+            /* Type scale: every size on the page comes from one of these steps */
+            --t-caption: 12px;
+            --t-meta: 14px;
+            --t-body: 16px;
+            --t-lead: 18px;
+            --t-title: 24px;
+            --t-figure: 32px;
+            --t-display: 44px;
         }
 
         * {
@@ -33,7 +42,7 @@
 
         body {
             font-family: var(--sans);
-            font-size: 16px;
+            font-size: var(--t-body);
             line-height: 1.65;
             color: var(--ink);
             background: var(--paper);
@@ -95,7 +104,7 @@
 
         .mark span {
             font-weight: 600;
-            font-size: 15px;
+            font-size: var(--t-body);
             letter-spacing: -0.01em;
         }
 
@@ -103,7 +112,7 @@
             display: flex;
             gap: 22px;
             font-family: var(--mono);
-            font-size: 13px;
+            font-size: var(--t-body);
         }
 
         .site-nav a {
@@ -123,7 +132,7 @@
 
         .eyebrow {
             font-family: var(--mono);
-            font-size: 12px;
+            font-size: var(--t-caption);
             font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
@@ -132,7 +141,7 @@
         }
 
         h1 {
-            font-size: 44px;
+            font-size: var(--t-display);
             line-height: 1.1;
             letter-spacing: -0.03em;
             font-weight: 700;
@@ -140,7 +149,7 @@
         }
 
         .lede {
-            font-size: 17px;
+            font-size: var(--t-lead);
             color: var(--muted);
             margin-top: 20px;
             max-width: 58ch;
@@ -153,7 +162,7 @@
         }
 
         .section h2 {
-            font-size: 24px;
+            font-size: var(--t-title);
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.3;
@@ -207,7 +216,7 @@
 
         .event-month {
             display: block;
-            font-size: 11px;
+            font-size: var(--t-caption);
             font-weight: 600;
             letter-spacing: 0.12em;
             color: var(--muted);
@@ -215,14 +224,14 @@
 
         .event-day {
             display: block;
-            font-size: 28px;
+            font-size: var(--t-figure);
             font-weight: 600;
             line-height: 1.2;
             color: var(--accent);
         }
 
         .event-body h3 {
-            font-size: 17px;
+            font-size: var(--t-lead);
             font-weight: 600;
             letter-spacing: -0.01em;
             line-height: 1.35;
@@ -230,7 +239,7 @@
 
         .event-body p {
             font-family: var(--mono);
-            font-size: 13px;
+            font-size: var(--t-meta);
             color: var(--muted);
             margin-top: 3px;
         }
@@ -239,7 +248,7 @@
             display: inline-block;
             margin-top: 10px;
             font-family: var(--mono);
-            font-size: 13px;
+            font-size: var(--t-meta);
             font-weight: 500;
             color: var(--accent);
         }
@@ -253,7 +262,7 @@
         }
 
         .event-footnote {
-            font-size: 13px;
+            font-size: var(--t-meta);
             color: var(--muted);
             margin-top: 20px;
         }
@@ -286,7 +295,7 @@
 
         .log-date {
             font-family: var(--mono);
-            font-size: 13px;
+            font-size: var(--t-meta);
             color: var(--muted);
         }
 
@@ -302,7 +311,7 @@
 
         .tag {
             font-family: var(--mono);
-            font-size: 14px;
+            font-size: var(--t-body);
             font-weight: 500;
             color: var(--accent);
         }
@@ -318,7 +327,7 @@
         .topics li {
             padding: 12px 0;
             border-top: 1px solid var(--rule);
-            font-size: 15px;
+            font-size: var(--t-body);
         }
 
         /* Contact */
@@ -339,7 +348,7 @@
             flex-shrink: 0;
             width: 90px;
             font-family: var(--mono);
-            font-size: 12px;
+            font-size: var(--t-caption);
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -347,14 +356,14 @@
         }
 
         .contact-list dd {
-            font-size: 15px;
+            font-size: var(--t-body);
         }
 
         /* Footer */
         footer {
             padding: 28px 0 48px;
             font-family: var(--mono);
-            font-size: 12px;
+            font-size: var(--t-caption);
             color: var(--muted);
         }
 
@@ -364,7 +373,7 @@
             }
 
             h1 {
-                font-size: 32px;
+                font-size: var(--t-figure);
             }
 
             .section {
