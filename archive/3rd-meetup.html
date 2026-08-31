@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Archive of the 3rd SF Bay Area Linux Kernel & eBPF Meetup, August 30, 2026 in Campbell, CA: recording and slides">
+    <meta property="og:image" content="../logo.png">
+    <meta property="og:title" content="3rd Meetup Archive - Linux Kernel & eBPF Meetup">
+    <meta property="og:description" content="Recording and slides from the 3rd SF Bay Area Linux Kernel & eBPF Meetup, August 30, 2026 in Campbell, CA">
+    <link rel="icon" type="image/png" href="../logo-small.png">
+    <title>3rd Meetup - Linux Kernel &amp; eBPF Meetup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #fcfcfb;
+            --ink: #1e2a36;
+            --muted: #5c6b7a;
+            --accent: #c2452d;
+            --rule: #e4e4e0;
+            --panel: #f4f4f1;
+            --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+            /* Type scale: every size on the page comes from one of these steps */
+            --t-caption: 12px;
+            --t-meta: 14px;
+            --t-body: 16px;
+            --t-lead: 18px;
+            --t-title: 24px;
+            --t-figure: 32px;
+            --t-display: 44px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            font-size: var(--t-body);
+            line-height: 1.65;
+            color: var(--ink);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .wrap {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .site-header {
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .site-header .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+
+        .mark {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--ink);
+        }
+
+        .mark:hover {
+            text-decoration: none;
+        }
+
+        .mark img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .mark span {
+            font-weight: 600;
+            font-size: var(--t-body);
+            letter-spacing: -0.01em;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 22px;
+            font-family: var(--mono);
+            font-size: var(--t-body);
+        }
+
+        .site-nav a {
+            color: var(--muted);
+        }
+
+        .site-nav a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .page-head {
+            padding: 56px 0 44px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: var(--t-caption);
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: var(--t-figure);
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            font-weight: 700;
+        }
+
+        h1 .tag {
+            font-family: var(--mono);
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 28px;
+            margin-top: 20px;
+            font-family: var(--mono);
+            font-size: var(--t-meta);
+            color: var(--muted);
+        }
+
+        .facts b {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section h2 {
+            font-size: var(--t-title);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-note {
+            margin-top: 14px;
+            font-family: var(--mono);
+            font-size: var(--t-meta);
+            color: var(--muted);
+        }
+
+        .rows {
+            list-style: none;
+        }
+
+        .rows li {
+            padding: 14px 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .rows b {
+            font-weight: 600;
+        }
+
+        .rows .dim {
+            color: var(--muted);
+        }
+
+        .slide-link {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: var(--mono);
+            font-size: var(--t-meta);
+            font-weight: 500;
+        }
+
+        footer {
+            padding: 28px 0 48px;
+            font-family: var(--mono);
+            font-size: var(--t-caption);
+            color: var(--muted);
+        }
+
+        @media (max-width: 640px) {
+            .page-head {
+                padding: 40px 0 36px;
+            }
+
+            h1 {
+                font-size: var(--t-title);
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .site-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="mark" href="../index.html">
+                <img src="../logo-small.png" alt="SF Bay Area Linux Kernel &amp; eBPF Meetup logo">
+                <span>Kernel &amp; eBPF Meetup</span>
+            </a>
+            <nav class="site-nav">
+                <a href="../index.html#upcoming">next</a>
+                <a href="../index.html#archive">archive</a>
+                <a href="../index.html#about">about</a>
+                <a href="../index.html#contact">contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-head">
+        <div class="wrap">
+            <p class="eyebrow">Archive &middot; 3rd Meetup</p>
+            <h1><span class="tag">[PATCH v3]</span> Linux Kernel &amp; eBPF Meetup</h1>
+            <div class="facts">
+                <span>Date: <b>Sunday, August 30, 2026</b></span>
+                <span>Location: <b>Campbell, CA</b></span>
+                <span>Event: <b><a href="https://luma.com/jx4oaqn3">Luma page</a></b></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="wrap">
+        <section class="section" id="slides">
+            <h2>Talks</h2>
+            <ul class="rows">
+                <li>
+                    <b>Setup Linux Debugging in VS Code: A Fast ARM64 Workflow</b> <span class="dim"><a href="https://www.linkedin.com/in/kananthr/">Anantha Ramayya Kandrapu</a></span>
+                    <br>
+                    <a class="slide-link" href="../slides/2026-08-30-setup-linux-debugging-in-vs-code.pdf">Download slides (PDF) &rarr;</a>
+                </li>
+                <li>
+                    <b>Deterministic Record-and-Replay on top of the Linux Kernel</b> <span class="dim"><a href="https://www.linkedin.com/in/tongping/">Tongping Liu</a></span>
+                    <br>
+                    <a class="slide-link" href="../slides/2026-08-30-deterministic-record-and-replay.pdf">Download slides (PDF) &rarr;</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" id="recording">
+            <h2>Recording</h2>
+            <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/k4L9FIQ6_EE" title="[PATCH v3] Linux Kernel &amp; eBPF Meetup recording" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="video-note">Also available <a href="https://youtu.be/k4L9FIQ6_EE">on YouTube</a>. The second talk is not included in the recording at the speaker's request.</p>
+        </section>
+    </main>
+
+    <footer class="wrap">
+        <p>SF Bay Area Linux Kernel &amp; eBPF Meetup &middot; <a href="../index.html">back to home</a></p>
+    </footer>
+</body>
+</html>
